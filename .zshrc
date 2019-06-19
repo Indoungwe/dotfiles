@@ -1,33 +1,30 @@
-
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/indoungwe/.oh-my-zsh"
+export ZSH="/home/indoungwe/.oh-my-zsh"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+ZSH_THEME="bira"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=14
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -36,10 +33,10 @@
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -57,14 +54,15 @@
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
+plugins=(virtualenv git sudo)
 
+ZSH_DISABLE_COMPFIX=true
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -74,17 +72,26 @@ plugins=(
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+alias wrk="cd /home/indoungwe/Dropbox/work/bitlog && source venv/bin/activate && clear"
+alias cleare="clear"
+alias cl="clear"
+alias -g G='|grep'
+
+# Выбор Vim как редактора по умолчанию
+export VISUAL=vim
+
+# При переходе в папку показать ее содержимое
+c() {cd $1; ls;}
+alias cd="c"
 
 # Автоматически активировать TMUX при запуске консоли
 # if [ "$TMUX" = "" ]; then tmux; fi
@@ -97,26 +104,3 @@ if which tmux >/dev/null 2>&1; then
         tmux attach || break
     done
 fi
-
-# Мои алиасы для консоли
-alias upd='sudo apt-get -y update && sudo apt-get -y upgrade'
-alias zshrc='vim ~/.zshrc'
-alias vimrc='vim ~/.vimrc'
-alias tmuxconf='vim ~/.tmux.conf'
-alias workfolder='cd /mnt/mainmem/Privat/Sync/Python'
-alias v="vim -p"
-
-# Автокоректировка вводимых команд
-ENABLE_CORRECTION="true"
-
-# Выбор Vim как редактора по умолчанию
-export VISUAL=vim
-
-# При переходе в папку показать ее содержимое
- c() {cd $1; ls;}
-alias cd="c"
-
-# Тема
-ZSH_THEME="agnoster"
-# Применить все предыдущие настройки
-source $ZSH/oh-my-zsh.sh
