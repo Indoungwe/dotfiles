@@ -1,7 +1,4 @@
-
 " Подсветка синтаксиса
-filetype on
-filetype plugin indent on
 syntax on
 " Настройка линтера
 let g:ale_completion_enabled = 1 " Включить линтер
@@ -81,11 +78,7 @@ filetype plugin indent on    " required
 
 " Темы
 colorschem zenburn
-let g:lightline = {'colorscheme': 'seoul256',}
-set laststatus=2
+
 " Поддержка 256 цветов
 set t_Co=256
-
-" Выбор стандатного шрифта
-set guifont=Inconsolata\ for\ Powerline:h24
-set cursorline
+hi Normal guibg=NONE ctermbg=NONE
