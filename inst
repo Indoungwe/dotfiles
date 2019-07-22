@@ -1,7 +1,7 @@
 #!/bin/sh
 
 sudo apt-get update && sudo apt-get -y upgrade
-sudo apt-get install -y git python3 python3-pip python-dev python3-dev curl wget zsh vim tmux guake plank
+sudo apt-get install -y git python3 python3-pip python-dev python3-dev curl wget zsh vim tmux guake plank fonts-firacode
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
